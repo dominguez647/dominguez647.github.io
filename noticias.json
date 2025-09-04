@@ -1,0 +1,83 @@
+{
+  "noticias": [
+    {
+      "id": 1,
+      "titulo": "Lucas Vázquez sorprende al fútbol europeo y ficha por el Bayer Leverkusen",
+      "descripcion": "El centrocampista español da el salto a la Bundesliga tras destacarse en LaLiga.",
+      "fecha": "09:35 26/08/2025",
+      "liga": "Bundesliga",
+      "equipo_origen": "Real Madrid",
+      "equipo_destino": "Bayer Leverkusen"
+    },
+    {
+      "id": 2,
+      "titulo": "Rasmus Højlund está a un paso de fichar por el Napoli",
+      "descripcion": "El delantero danés podría recalar en el conjunto italiano en las próximas horas.",
+      "fecha": "11:40 24/08/2025",
+      "liga": "Serie A",
+      "equipo_destino": "Napoli"
+    },
+    {
+      "id": 3,
+      "titulo": "El Manchester United rechaza un intercambio con el Chelsea por Garnacho",
+      "descripcion": "Los diablos rojos desestiman una operación directa por su joven promesa.",
+      "fecha": "22:23 23/08/2025",
+      "liga": "Premier League",
+      "equipos": ["Manchester United", "Chelsea"]
+    },
+    {
+      "id": 4,
+      "titulo": "Flick mete prisa al FC Barcelona para lograr las inscripciones de su plantilla",
+      "descripcion": "El técnico alemán urge al club para registrar a sus refuerzos antes del cierre.",
+      "fecha": "18:34 22/08/2025",
+      "liga": "LaLiga",
+      "equipo": "FC Barcelona"
+    },
+    {
+      "id": 5,
+      "titulo": "Los dos fichajes que aún puede realizar el Chelsea sobre el cierre del mercado",
+      "descripcion": "El conjunto londinense mantiene abiertas dos operaciones antes del fin del periodo de fichajes.",
+      "fecha": "13:44 21/08/2025",
+      "liga": "Premier League",
+      "equipo": "Chelsea"
+    },
+    {
+      "id": 6,
+      "titulo": "El futbolista del Real Madrid que está por dejar el club tras ser borrado por Xabi Alonso",
+      "descripcion": "Dani Ceballos busca nuevo destino tras quedar fuera de los planes del técnico.",
+      "fecha": "17:30 20/08/2025",
+      "liga": "LaLiga",
+      "equipo_origen": "Real Madrid"
+    },
+    {
+      "id": 7,
+      "titulo": "Los 10 máximos goleadores de las 5 grandes ligas de Europa en la temporada 2025/26",
+      "descripcion": "Desde Haaland hasta Julián Álvarez, la lista actualizada de los artilleros más destacados.",
+      "fecha": "15:23 19/08/2025",
+      "liga": "Europeas"
+    },
+    {
+      "id": 8,
+      "titulo": "Vinícius Junior envía un mensaje tras su polémica actuación en el Real Madrid",
+      "descripcion": "El brasileño reacciona desde sus redes tras una actuación controvertida y con tarjeta amarilla.",
+      "fecha": "19:03 18/08/2025",
+      "liga": "LaLiga",
+      "equipo": "Real Madrid"
+    },
+    {
+      "id": 9,
+      "titulo": "El calendario con los cinco próximos partidos del Real Madrid tras vencer 3-0 al Real Oviedo",
+      "descripcion": "Los merengues empiezan a planificar su ruta en las próximas jornadas de LaLiga.",
+      "fecha": "10:30 17/08/2025",
+      "liga": "LaLiga",
+      "equipo": "Real Madrid"
+    },
+    {
+      "id": 10,
+      "titulo": "Champions League 2025/26: fechas de inicio y final, sorteo de fase de grupos y clasificados",
+      "descripcion": "Toda la información clave sobre el calendario y participantes de la próxima edición de la Champions.",
+      "fecha": "16:13 16/08/2025",
+      "competición": "Champions League"
+    }
+  ]
+}
