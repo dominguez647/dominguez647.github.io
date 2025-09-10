@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+    <script>
+        // Agrega un parámetro adicional 'mapId' para identificar cada mapa
+        async function initMap(latitude, longitude, mapId) {
+        let position = { lat: latitude, lng: longitude };
+
+        await waitForGoogleMaps();
+
+        // Crea el mapa con el ID específico y las coordenadas dadas
+        const map = new google.maps.Map(document.getElementById(mapId), {
+            zoom: 13.5,
+            center: position,
+            mapId: "DEMO_MAP_ID",
+        });
+
+        // Crea el marcador en las coordenadas dadas
+        const marker = new google.maps.Marker({
+            map: map,
+            position: position,
+            title: `Ubicación ${mapId}`,
+        });
+        }
+
+        // La función para esperar a que se cargue Google Maps
+        async function waitForGoogleMaps() {
+        return new Promise((resolve) => {
+            const checkGoogleMapsLoaded = () => {
+            if (typeof google !== "undefined") {
+                resolve();
+            } else {
+                setTimeout(checkGoogleMapsLoaded, 100);
+            }
+            };
+            checkGoogleMapsLoaded();
+        });
+        }
+    </script>
+    <script async src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCwfi27OBGhjvTyQb_f-3hx-p5teflZTJU&callback=initMap"></script>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>contacto</title>
+        <link rel="stylesheet" href="./../css/style.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="./../index.html"><img src="./../img/logo.png" alt="onefootball">
+                <ul>
+                    <li><a href="./../index.html">Home</a></li>
+                    <li><a href="./galeria.html">Galeria</a></li>
+                    <li><a href="./presupuesto.html">Presupuesto</a></li>
+                    <li><a class="activo" href="./contacto.html">Contacto</a></li>
+                </ul>       
+            </nav>
+        </header>
+
+        <main>
+            <section class="seccion3"> 
+
+                <article class="contact-us-container">
+                    <img src="img/.jpg" alt="">
+                    <h2>Puede contactarnos</h2>
+                    <p>Mario Dominguez Sanchez</p>
+                    <p>981293029</p>
+                    <p>Estamos situados en Gran Via, Madrid</p>
+                    <p>onefootball@gmail.com</p>
+                </article>
+                <article class="map-container">
+                    <div class="Mapa" id="map1" style="margin: auto; height: 350px; max-width: 350px;"></div>      
+                    <script>
+                        initMap(52.250465250630135, 21.035084606331438, 'map1');
+                    </script>
+                </article>
+            </section>
+        </main>
+        <footer> 
+            <section>
+                <a href="https://www.instagram.com/"><img src="../img/instagram.png" alt="instagram"></a>
+                <a href="https://www.facebook.com/"><img src="../img/facebook.png" alt="facebook"></a>
+                <a href="https://x.com/"><img src="../img/twitter.png" alt="twitter"></a>
+            </section>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum enim harum culpa asperiores nihil maxime impedit expedita quas nisi nostrum laborum accusamus, at atque vitae porro velit illo non commodi?</p>
+        </footer>
+    </body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Formulario registro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../css/style.css">
+    <title>presupuesto</title>
+    <link rel="stylesheet" href="./../css/style.css">
+</head>
+<body>
+  
+    <header>
+        <nav>
+            <a href="./../index.html"><img src="./../img/logo.png" alt="onefootball">
+            <ul>
+                <li><a href="./../index.html">Home</a></li>
+                <li><a href="./galeria.html">Galeria</a></li>
+                <li><a class="activo" href="./presupuesto.html">Presupuesto</a></li>
+                <li><a href="./contacto.html">Contacto</a></li>
+            </ul>       
+        </nav>
+    </header>
+    <main>
+      <form class="form-register" id="formRegistro">
+        <h4>Datos de contacto</h4>
+      
+        <input class="controls" type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" maxlength="15" required>
+        <span id="errorNombre" class="error"></span><br>
+      
+        <input class="controls" type="text" name="apellido" id="apellido" placeholder="Ingrese su apellido" maxlength="40" required>
+        <span id="errorApellido" class="error"></span><br>
+      
+        <input class="controls" type="tel" name="telefono" id="telefono" placeholder="Ingrese su teléfono" maxlength="9" pattern="[0-9]{9}" required>
+        <span id="errorTelefono" class="error"></span><br>
+      
+        <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su correo" required>
+        <span id="errorCorreo" class="error"></span><br>
+      
+        <!-- Producto -->
+        <label for="producto">Producto:</label><br>
+        <select id="producto" name="producto" required>
+          <option value="">-- Seleccione un producto --</option>
+          <option value="1000">Página Web (1000 €)</option>
+          <option value="3000">Aplicación Móvil (3000 €)</option>
+          <option value="5000">Tienda Online (5000 €)</option>
+        </select>
+        <br><br>
+      
+        <!-- Plazo -->
+        <label for="plazo">Plazo (en meses):</label><br>
+        <input type="number" id="plazo" name="plazo" min="1" max="12" required>
+        <p><small>Si el plazo es ≤ 3 meses → 10% descuento</small></p>
+        <br>
+      
+        <!-- Extras -->
+        <label>Extras:</label><br>
+        <input type="checkbox" class="extra" value="200"> SEO (+200 €)<br>
+        <input type="checkbox" class="extra" value="500"> Mantenimiento (+500 €)<br>
+        <input type="checkbox" class="extra" value="300"> Soporte 24/7 (+300 €)<br><br>
+      
+        <!-- Presupuesto -->
+        <label>Presupuesto final:</label><br>
+        <input type="text" id="presupuesto" readonly value="0 €">
+        <br><br>
+      
+        <!-- Condiciones -->
+        <input type="checkbox" id="condiciones" required> Acepto las condiciones de privacidad
+        <br><br>
+      
+        <!-- Botones -->
+        <button type="submit">Enviar presupuesto</button>
+        <button type="reset">Resetear formulario</button>
+      </form>
+      
+      <script>
+        // Referencias
+        const form = document.getElementById("formRegistro");
+        const nombre = document.getElementById("nombre");
+        const apellido = document.getElementById("apellido");
+        const telefono = document.getElementById("telefono");
+        const correo = document.getElementById("correo");
+        const producto = document.getElementById("producto");
+        const plazo = document.getElementById("plazo");
+        const extras = document.querySelectorAll(".extra");
+        const presupuesto = document.getElementById("presupuesto");
+        const condiciones = document.getElementById("condiciones");
+      
+        // Calcular presupuesto dinámico
+        function calcularPresupuesto() {
+          let total = 0;
+      
+          if (producto.value) total += parseInt(producto.value);
+      
+          extras.forEach(extra => {
+            if (extra.checked && extra.value) total += parseInt(extra.value);
+          });
+      
+          if (plazo.value && parseInt(plazo.value) <= 3) total *= 0.9;
+      
+          presupuesto.value = total + " €";
+        }
+      
+        producto.addEventListener("change", calcularPresupuesto);
+        plazo.addEventListener("input", calcularPresupuesto);
+        extras.forEach(extra => extra.addEventListener("change", calcularPresupuesto));
+      
+        // Validación al enviar
+        form.addEventListener("submit", function(e) {
+          e.preventDefault();
+          let valido = true;
+      
+          // Validar nombre y apellido (mínimo 3 caracteres)
+          if (nombre.value.trim().length < 3) {
+            document.getElementById("errorNombre").textContent = "El nombre debe tener al menos 3 caracteres.";
+            valido = false;
+          } else {
+            document.getElementById("errorNombre").textContent = "";
+          }
+      
+          if (apellido.value.trim().length < 3) {
+            document.getElementById("errorApellido").textContent = "El apellido debe tener al menos 3 caracteres.";
+            valido = false;
+          } else {
+            document.getElementById("errorApellido").textContent = "";
+          }
+      
+          // Validar teléfono (9 dígitos)
+          const regexTel = /^[0-9]{9}$/;
+          if (!regexTel.test(telefono.value.trim())) {
+            document.getElementById("errorTelefono").textContent = "El teléfono debe tener 9 dígitos numéricos.";
+            valido = false;
+          } else {
+            document.getElementById("errorTelefono").textContent = "";
+          }
+      
+          // Validar correo
+          const regexCorreo = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+          if (!regexCorreo.test(correo.value.trim())) {
+            document.getElementById("errorCorreo").textContent = "Ingrese un correo válido (ej: usuario@dominio.com).";
+            valido = false;
+          } else {
+            document.getElementById("errorCorreo").textContent = "";
+          }
+      
+          // Validar producto, plazo y condiciones
+          if (!producto.value || !plazo.value || !condiciones.checked) {
+            alert("⚠️ Complete todos los campos y acepte las condiciones.");
+            valido = false;
+          }
+      
+          // Enviar si todo es válido
+          if (valido) {
+            alert("✅ Formulario enviado correctamente.");
+            form.submit();
+          }
+        });
+      </script>
+      
+    </main>
+     <footer> 
+        <section>
+            <a href="https://www.instagram.com/"><img src="../img/instagram.png" alt="instagram"></a>
+            <a href="https://www.facebook.com/"><img src="../img/facebook.png" alt="facebook"></a>
+            <a href="https://x.com/"><img src="../img/twitter.png" alt="twitter"></a>
+        </section>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum enim harum culpa asperiores nihil maxime impedit expedita quas nisi nostrum laborum accusamus, at atque vitae porro velit illo non commodi?</p>
+    </footer>
+</body>
+</html>

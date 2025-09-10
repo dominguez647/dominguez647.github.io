@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onefootball</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a href="./index.html"><img src="./img/logo.png" alt="onefootball">
+                <ul>
+                    <li><a class="activo" href="./index.html">Home</a></li>
+                    <li><a href="./views/galeria.html">Galeria</a></li>
+                    <li><a href="./views/presupuesto.html">Presupuesto</a></li>
+                    <li><a href="./views/contacto.html">Contacto</a></li>
+                </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="fondo"></div>
+        <h1>Onefootball</h1>
+        </div>
+        <!-- Productos destacados -->
+        <section class="full-width">
+            <h2>Productos Destacados</h2>
+            <div class="products">
+
+                <div class="product-card">
+                    <img src="https://www.bing.com/th/id/OIP.xzqFLKAB04bigpdTO8pkPwHaJQ?w=177&h=211&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt="Camiseta de fútbol" width="230" height="274">
+                    <h3>Camiseta Oficial</h3>
+                    <p>29,99 €</p>
+                    <a class="btncomprar" href="views/presupuesto.html">Comprar</a>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://thafd.bing.com/th/id/OIP.2xzEJ54qwmkUXvEOUf8slAHaEM?w=268&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Pantalón deportivo" width="348" height="234">
+                    <h3>Pantalón Deportivo</h3>
+                    <p>34,99 €</p>
+                    <a class="btncomprar" href="views/presupuesto.html">Comprar</a>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://thafd.bing.com/th/id/OIP.GT4HV9zTJcPYlvPUI7aG2wAAAA?w=225&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7" alt="Chándal completo" width="292" height="234">
+                    <h3>Chándal Completo</h3>
+                    <p>59,99 €</p>
+                    <a class="btncomprar" href="views/presupuesto.html">Comprar</a>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://thafd.bing.com/th/id/OIP.qdoXD4NQq6ds2xtnf3BKzAAAAA?w=225&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3" alt="Balón de fútbol" width="292"  height="234">
+                    <h3>Balón de Fútbol</h3>
+                    <p>24,99 €</p>
+                    <a class="btncomprar" href="views/presupuesto.html">Comprar</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Categorías principales -->
+        <section class="full-width">
+            <h2>Categorías Principales</h2>
+            <div class="categories">
+                <div class="category">Camisetas</div>
+                <div class="category">Pantalones</div>
+                <div class="category">Chandals</div>
+                <div class="category">Balones</div>
+            </div>
+        </section>
+
+        <!-- Testimonios y Noticias (50/50) -->
+        <section class="half-half">
+            <div class="half">
+                <h2>Testimonios</h2>
+                <div class="testimonial">
+                    <p>"Excelente calidad y envío rápido."</p>
+                    <strong>- María</strong>
+                </div>
+
+                <div class="testimonial">
+                    <p>"Los mejores precios que he encontrado online."</p>
+                    <strong>- Juan</strong>
+                </div>
+
+                <div class="testimonial">
+                    <p>"Muy buena atención al cliente, repetiré sin duda."</p>
+                    <strong>- Sofía</strong>
+                </div>
+
+                <div class="testimonial">
+                    <p>"Gran variedad de productos y todo llegó en perfecto estado."</p>
+                    <strong>- Carlos</strong>
+                </div>
+
+                <div class="testimonial">
+                    <p>"La experiencia de compra fue sencilla y segura."</p>
+                    <strong>- Laura</strong>
+                </div>
+
+            </div>
+
+
+
+            <!-- Noticias -->
+            <div id="noticias" class="half">
+                <h2>Noticias</h2>
+                <script>
+                    // Cargar el JSON desde el archivo
+                    fetch("noticias.json")
+                        .then(response => response.json())
+                        .then(data => {
+                            const contenedor = document.getElementById("noticias");
+
+                            // Recorrer cada noticia
+                            data.noticias.forEach(noticia => {
+                                // Crear un div para cada noticia
+                                const div = document.createElement("div");
+                                div.classList.add("noticia");
+
+                                // Insertar título y fecha
+                                div.innerHTML = `
+            <h4 style="margin:20px 0 0 0">${noticia.titulo}</h4>
+            <p class="fecha">${noticia.fecha}</p>
+          `;
+
+                                // Agregar al contenedor
+                                contenedor.appendChild(div);
+                            });
+                        })
+                        .catch(error => console.error("Error cargando noticias:", error));
+                </script>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section>
+            <a href="https://www.instagram.com/"><img src="img/instagram.png" alt="instagram"></a>
+            <a href="https://www.facebook.com/"><img src="img/facebook.png" alt="facebook"></a>
+            <a href="https://x.com/"><img src="img/twitter.png" alt="twitter"></a>
+        </section>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum enim harum culpa asperiores nihil maxime
+            impedit expedita quas nisi nostrum laborum accusamus, at atque vitae porro velit illo non commodi?</p>
+    </footer>
+
+</body>
+
+</html>
